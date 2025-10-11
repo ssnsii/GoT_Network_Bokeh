@@ -1,0 +1,4 @@
+bokeh==3.6.2
+pandas
+networkx
+py2neo
