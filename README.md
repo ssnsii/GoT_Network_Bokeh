@@ -1,8 +1,5 @@
 # Interactive Graph Explorer: Game of Thrones Character Network
 
-![Bokeh Logo](<img width="225" height="225" alt="image" src="https://github.com/user-attachments/assets/b37ab26c-139f-485e-96da-78d23a57751d" />
-)  
-
 An interactive network visualization of Game of Thrones character interactions using Python, Bokeh Server, NetworkX, and Neo4j AuraDB. Explore characters and their interactions dynamically with hover tooltips, search/filter, and dynamic highlighting.
 
 ---
