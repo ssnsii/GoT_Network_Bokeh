@@ -1,1 +1,1 @@
-bokeh serve main.py --allow-websocket-origin=bokeh-app.onrender.com --port $PORT
+bokeh serve main.py --allow-websocket-origin=bokeh-graph-app.onrender.com --port $PORT
