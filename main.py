@@ -15,9 +15,12 @@ from bokeh.layouts import column
 # -----------------------------
 # Connect to Neo4j
 # -----------------------------
-# Create a connection to the local Neo4j database using Bolt protocol
-# Authentication is provided with username "neo4j" and password "12345678"
-graph = Graph("bolt://127.0.0.1:7687", auth=("neo4j", "12345678"))
+# Create a connection to the aura Neo4j database
+# Authentication is provided with username and password
+graph = Graph(
+    "neo4j+s://7b9dc757.databases.neo4j.io",
+    auth=("neo4j", "gDitqEq34XAJHTCuioGPKIF2_-ephuCq3gNxmxIrr5M")
+)
 
 # -----------------------------
 # Query Neo4j
