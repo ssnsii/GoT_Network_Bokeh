@@ -2,8 +2,6 @@
 
 An interactive network visualization of Game of Thrones character interactions using Python, Bokeh Server, NetworkX, and Neo4j AuraDB. Explore characters and their interactions dynamically with hover tooltips, search/filter, and dynamic highlighting.
 
----
-
 ## Features
 
 - Graph rendering using NetworkX spring layout  
@@ -13,8 +11,6 @@ An interactive network visualization of Game of Thrones character interactions u
 - Search/filter nodes by name dynamically  
 - Zoom and pan navigation  
 - Deployable on Render.com or runnable locally  
-
----
 
 ## Repository Structure
 
@@ -26,15 +22,11 @@ bokeh_graph_app/
 ├── requirements.txt    # Python dependencies
 └── README.md           # Project documentation
 
-````
-
----
+```
 
 ## Live Demo
 
 [https://bokeh-graph-app.onrender.com/main](https://bokeh-graph-app.onrender.com/main)
-
----
 
 ## Run Locally
 
@@ -65,9 +57,8 @@ pip install -r requirements.txt
 bokeh serve --show main.py
 ```
 
-Open [http://localhost:5006/main](http://localhost:5006/main) in your browser.
+Open [http://localhost:5006/main](http://localhost:5006/main) in browser.
 
----
 
 ## Deploy on Render.com
 
@@ -79,8 +70,6 @@ Open [http://localhost:5006/main](http://localhost:5006/main) in your browser.
    * Start Command: `bash render_start.sh`
      Ensure `--allow-websocket-origin=bokeh-graph-app.onrender.com` is included
 4. Deploy and access the app live at [https://bokeh-graph-app.onrender.com/main](https://bokeh-graph-app.onrender.com/main)
-
----
 
 ## Neo4j Setup
 
@@ -99,8 +88,6 @@ MERGE (tgt:Character {name: row.Target})
 MERGE (src)-[r:INTERACTS1]->(tgt)
 ON CREATE SET r.weight = toInteger(row.weight), r.book = 1;
 ```
-
----
 
 ## Dependencies
 
