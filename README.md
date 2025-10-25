@@ -36,9 +36,7 @@ bokeh_graph_app/
 
 ---
 
-## Quick Start
-
-### Run Locally
+## Run Locally
 
 1. Clone the repository:
 
@@ -71,7 +69,7 @@ Open [http://localhost:5006/main](http://localhost:5006/main) in your browser.
 
 ---
 
-### Deploy on Render.com
+## Deploy on Render.com
 
 1. Push repo to GitHub
 2. Create a **New Web Service** on Render and connect GitHub repo
