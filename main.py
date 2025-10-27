@@ -9,14 +9,17 @@ import networkx as nx
 from bokeh.models import Circle, MultiLine, HoverTool, TapTool, TextInput, CustomJS
 from bokeh.plotting import figure, from_networkx, curdoc
 from bokeh.layouts import column
+import os
+
+# Get credentials from environment variables
+uri = os.getenv("NEO4J_URI")
+user = os.getenv("NEO4J_USER")
+password = os.getenv("NEO4J_PASSWORD")
 
 # Connect to Neo4j
 # Create a connection to the aura Neo4j database
 # Authentication is provided with username and password
-graph = Graph(
-    "",
-    auth=("", "")
-)
+graph = Graph(uri, auth=(user, password))
 
 # Query Neo4j
 # Run a Cypher query to get all Character nodes and their interactions
