@@ -28,6 +28,9 @@ bokeh_graph_app/
 
 [https://bokeh-graph-app.onrender.com/main](https://bokeh-graph-app.onrender.com/main)
 
+<img width="1021" height="802" alt="image" src="https://github.com/user-attachments/assets/516f9315-9ffe-433c-af9e-309c09911c34" />
+
+
 ## Run Locally
 
 1. Clone the repository:
@@ -70,9 +73,6 @@ Open [http://localhost:5006/main](http://localhost:5006/main) in browser.
    * Start Command: `bash render_start.sh`
      Ensure `--allow-websocket-origin=bokeh-graph-app.onrender.com` is included
 4. Deploy and access the app live at [https://bokeh-graph-app.onrender.com/main](https://bokeh-graph-app.onrender.com/main)
-
-<img width="1021" height="802" alt="image" src="https://github.com/user-attachments/assets/78018128-e08e-46f4-8d4a-9e34567962c3" />
-
 
 ## Neo4j Setup
 
