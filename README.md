@@ -71,6 +71,9 @@ Open [http://localhost:5006/main](http://localhost:5006/main) in browser.
      Ensure `--allow-websocket-origin=bokeh-graph-app.onrender.com` is included
 4. Deploy and access the app live at [https://bokeh-graph-app.onrender.com/main](https://bokeh-graph-app.onrender.com/main)
 
+<img width="1021" height="802" alt="image" src="https://github.com/user-attachments/assets/78018128-e08e-46f4-8d4a-9e34567962c3" />
+
+
 ## Neo4j Setup
 
 * Uses Neo4j AuraDB (cloud-hosted)
