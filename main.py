@@ -1,6 +1,4 @@
-# -----------------------------
 # Import libraries
-# -----------------------------
 # py2neo to connect Python with Neo4j
 from py2neo import Graph
 # pandas for handling tabular data from Neo4j
@@ -12,19 +10,15 @@ from bokeh.models import Circle, MultiLine, HoverTool, TapTool, TextInput, Custo
 from bokeh.plotting import figure, from_networkx, curdoc
 from bokeh.layouts import column
 
-# -----------------------------
 # Connect to Neo4j
-# -----------------------------
 # Create a connection to the aura Neo4j database
 # Authentication is provided with username and password
 graph = Graph(
-    "neo4j+s://7b9dc757.databases.neo4j.io",
-    auth=("neo4j", "gDitqEq34XAJHTCuioGPKIF2_-ephuCq3gNxmxIrr5M")
+    "",
+    auth=("", "")
 )
 
-# -----------------------------
 # Query Neo4j
-# -----------------------------
 # Run a Cypher query to get all Character nodes and their interactions
 # The query returns:
 #   - 'source': name of the starting node
@@ -39,9 +33,7 @@ LIMIT 100
 # Convert the query result to a pandas DataFrame for preprocessing
 data = graph.run(query).to_data_frame()
 
-# -----------------------------
 # Preprocessing
-# -----------------------------
 # Filter out weak interactions (weight < 2)
 data = data[data['weight'] >= 2]
 # Remove self-loops (nodes connecting to themselves)
@@ -51,9 +43,7 @@ data = data[data['source'] != data['target']]
 color_map = {'INTERACTS1':'purple','INTERACTS2':'red','INTERACTS3':'green','INTERACTS45':'blue'}
 data['edge_color'] = data['relation'].map(color_map)
 
-# -----------------------------
 # Build NetworkX graph
-# -----------------------------
 # Convert the DataFrame into a NetworkX graph
 # Nodes are characters, edges are relationships with attributes
 G = nx.from_pandas_edgelist(data, 'source', 'target', edge_attr=True)
@@ -66,9 +56,7 @@ for n in G.nodes():
     G.nodes[n]['relations'] = ", ".join([f"{e[2]['relation']} ({e[2]['weight']})" for e in edges])
     G.nodes[n]['node_color'] = 'skyblue'  # default node color
 
-# -----------------------------
 # Bokeh plot setup
-# -----------------------------
 # Create an interactive Bokeh figure
 plot = figure(title="Interactive Graph Explorer",
               x_range=(-1.5,1.5), y_range=(-1.5,1.5),
@@ -79,35 +67,27 @@ pos = nx.spring_layout(G, seed=42)
 # Convert NetworkX graph to Bokeh GraphRenderer
 graph_renderer = from_networkx(G, pos)
 
-# -----------------------------
 # Node data for Bokeh
-# -----------------------------
 # Attach attributes to node renderer for tooltips and styling
 graph_renderer.node_renderer.data_source.data['degree'] = [G.nodes[n]['degree'] for n in G.nodes()]
 graph_renderer.node_renderer.data_source.data['relations'] = [G.nodes[n]['relations'] for n in G.nodes()]
 graph_renderer.node_renderer.data_source.data['node_color'] = [G.nodes[n]['node_color'] for n in G.nodes()]
 
-# -----------------------------
 # Edge data for Bokeh
-# -----------------------------
 # Attach attributes to edge renderer for tooltips and styling
-# Note: use string node names as Bokeh expects them
+# use string node names as Bokeh expects them
 graph_renderer.edge_renderer.data_source.data['relation'] = [G.edges[e]['relation'] for e in G.edges()]
 graph_renderer.edge_renderer.data_source.data['weight'] = [G.edges[e]['weight'] for e in G.edges()]
 graph_renderer.edge_renderer.data_source.data['line_color'] = [G.edges[e]['edge_color'] for e in G.edges()]
 
-# -----------------------------
 # Styling nodes and edges
-# -----------------------------
 graph_renderer.node_renderer.glyph = Circle(radius=0.05, fill_color='node_color', fill_alpha=0.8)
 graph_renderer.edge_renderer.glyph = MultiLine(line_color='line_color', line_alpha=0.8, line_width=2)
 
 # Add the graph renderer to the plot
 plot.renderers.append(graph_renderer)
 
-# -----------------------------
 # Interactivity
-# -----------------------------
 # Add hover tool for nodes showing name, degree, and relations
 plot.add_tools(HoverTool(tooltips=[("Node","@index"),("Degree","@degree"),("Relations","@relations")],
                          renderers=[graph_renderer.node_renderer]))
@@ -117,9 +97,7 @@ plot.add_tools(HoverTool(tooltips=[("Relation","@relation"),("Weight","@weight")
 # Add tap tool for selecting nodes
 plot.add_tools(TapTool())
 
-# -----------------------------
 # Search / Filter input
-# -----------------------------
 # Create a text input widget for filtering nodes by name
 text_input = TextInput(title="Filter nodes by name:")
 
@@ -174,9 +152,7 @@ edges.selected.indices = connected_edges;
 # Trigger highlight when node selection changes
 graph_renderer.node_renderer.data_source.selected.js_on_change('indices', highlight_callback)
 
-# -----------------------------
 # Layout and add to document
-# -----------------------------
 # Arrange the search input and plot vertically
 layout = column(text_input, plot)
 # Add layout to the Bokeh document
