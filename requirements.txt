@@ -1,4 +1,4 @@
 bokeh==3.6.2
 pandas
 networkx
-py2neo>=2022.1.0
+py2neo
